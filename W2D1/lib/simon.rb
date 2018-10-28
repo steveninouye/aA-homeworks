@@ -17,8 +17,10 @@ class Simon
   def take_turn
     show_sequence
     require_sequence
-    round_success_message
-    self.sequence_length += 1
+    unless game_over
+      round_success_message
+      self.sequence_length += 1
+    end
   end
 
   def show_sequence
@@ -33,7 +35,7 @@ class Simon
 
   def require_sequence
     puts "What was the sequence?"
-    input = gets.chomp
+    gets.chomp
   end
 
   def add_random_color
@@ -41,11 +43,13 @@ class Simon
   end
 
   def round_success_message
-
+    puts "CORRECT!"
   end
 
   def game_over_message
-
+    puts "Sorry, the sequence was #{seq}\n
+      You lasted #{sequence_length} turns\n
+      Great Job!"
   end
 
   def reset_game
