@@ -22,11 +22,18 @@ class Simon
   end
 
   def show_sequence
+    print "You have 5 seconds to memorize the sequence.\n
+      >>Press ENTER when ready::"
+    gets
     add_random_color
+    p seq
+    sleep(5)
+    system "clear"
   end
 
   def require_sequence
-
+    puts "What was the sequence?"
+    input = gets.chomp
   end
 
   def add_random_color
@@ -42,6 +49,8 @@ class Simon
   end
 
   def reset_game
-
+    self.sequence_length = 1
+    self.game_over = false
+    self.seq = []
   end
 end
