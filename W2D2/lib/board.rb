@@ -2,6 +2,7 @@ class Board
   attr_accessor :cups
 
   def initialize(name1, name2)
+    @cups = Array.new(14){ |i| i == 6 || i == 13 ? [] : [:stone,:stone,:stone,:stone] }
   end
 
   def place_stones
@@ -9,6 +10,7 @@ class Board
   end
 
   def valid_move?(start_pos)
+    
   end
 
   def make_move(start_pos, current_player_name)
