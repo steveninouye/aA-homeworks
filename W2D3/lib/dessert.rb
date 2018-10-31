@@ -14,6 +14,7 @@ class Dessert
 
   def add_ingredient(ingredient)
     @ingredients << ingredient
+    p ingredients
   end
 
   def mix!
