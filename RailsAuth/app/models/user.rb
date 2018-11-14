@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   attr_reader :password
 
-  validates_presence_of :username, :session_token
-  validates :password_digest, presence: { message: 'Password can\'t be blank' }
-  validates :session_token, uniqueness: true
+  validates :username, presence: true, uniqueness: true
+  validates :password_digest, presence: { message: 'Password can\'t be blank'}
+  validates :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  before_initialize :ensure_session_token
+  before_validation :ensure_session_token
 
 # This method takes in a username and a password and returns the user that matches
   def self.find_by_credentials(username, password)
@@ -25,9 +25,10 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  def password=(pass)
-    @password = pass
-    self.password_digest = BCrypt::Password.new(pass)
+  def password=(password)
+    p "hello from here"
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def ensure_session_token
