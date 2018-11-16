@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bands</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bands.each do |band| %>
+      <tr>
+        <td><%= band.name %></td>
+        <td><%= link_to 'Show', band %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Band', new_band_url %>
