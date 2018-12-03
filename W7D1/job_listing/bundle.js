@@ -205,7 +205,7 @@ function (_React$Component) {
     value: function fetchJobListings(city) {
       $.ajax({
         crossDomain: true,
-        dataType: 'json',
+        dataType: 'jsonp',
         url: "https://jobs.github.com/positions.json?location=".concat(city, "&markdown=true"),
         type: 'GET',
         success: function (resp) {
